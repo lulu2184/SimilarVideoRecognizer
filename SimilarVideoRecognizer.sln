@@ -5,22 +5,47 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimilarVideoRecognizer", "SimilarVideoRecognizer\SimilarVideoRecognizer.vcxproj", "{7160029A-2AD6-4572-8789-2BAE6748639B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcxproj", "{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
+		Release|ARM = Release|ARM
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|ARM.ActiveCfg = Debug|Win32
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|Win32.Build.0 = Debug|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|x64.ActiveCfg = Debug|x64
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Debug|x64.Build.0 = Debug|x64
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|ARM.ActiveCfg = Release|Win32
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|Win32.ActiveCfg = Release|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|Win32.Build.0 = Release|Win32
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|x64.ActiveCfg = Release|x64
 		{7160029A-2AD6-4572-8789-2BAE6748639B}.Release|x64.Build.0 = Release|x64
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|ARM.ActiveCfg = Debug|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|Win32.Build.0 = Debug|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|x64.ActiveCfg = Debug|x64
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Debug|x64.Build.0 = Debug|x64
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|ARM.ActiveCfg = Release|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|Win32.ActiveCfg = Release|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|Win32.Build.0 = Release|Win32
+		{4E2C12F7-71C1-4CBE-98CE-CB8F629D9BB8}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

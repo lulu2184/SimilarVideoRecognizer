@@ -147,11 +147,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EigenvectorExtracterForImage.h" />
+    <ClInclude Include="LayerOfEigenvector.h" />
+    <ClInclude Include="OSIDGenerater.h" />
     <ClInclude Include="SampleExtracter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EigenvectorExtracterForImage.cpp" />
+    <ClCompile Include="LayerOfEigenvector.cpp" />
+    <ClCompile Include="OSIDGenerater.cpp" />
     <ClCompile Include="SampleExtracter.cpp" />
     <ClCompile Include="SimilarVideoRecognizer.cpp" />
     <ClCompile Include="stdafx.cpp">

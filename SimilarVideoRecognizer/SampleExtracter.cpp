@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "SampleExtracter.h"
+#include <direct.h>
 #include <iostream>
 #include <sstream>
-#include <windows.h>
-#include <tchar.h>
 
 
 SampleExtracter::SampleExtracter(const std::string &filepath, int gaplength)
@@ -19,54 +18,48 @@ SampleExtracter::~SampleExtracter()
 
 }
 
-TCHAR *SampleExtracter::str2pTCHAR(const std::string &str)
+LPCWSTR SampleExtracter::StringToLPCWSTR(const std::string &str)
 {
-	TCHAR *ret = new TCHAR[str.size() + 1];
-//	lstrcpy(ret, str.GetBuffer(str.size()));
-//	str.ReleaseBuffer();
-	return ret;
+	int len = MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, str.size());
+	WCHAR *tmp = new WCHAR[len];
+	MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, tmp, str.size());
+	return tmp;
 }
 
 bool SampleExtracter::IsValidOutputPath(const std::string &outputpath)
 {
 	WIN32_FIND_DATA FindFileData;
 	HANDLE hFind;
-//	TCHAR *tpath = str2pTCHAR(outputpath);
-	LPCWSTR path = (LPCWSTR) outputpath.c_str();
+	LPCWSTR path = StringToLPCWSTR(outputpath);
 	hFind = FindFirstFile(path, &FindFileData);
 	if (INVALID_HANDLE_VALUE == hFind)
 	{
-		std::cout << CreateDirectory(path, NULL) << std::endl;
+		if (_mkdir(outputpath.c_str()) < 0)
+		{
+			std::cout << "Failed to create the directory" << std::endl;
+			return false;
+		}
 		return true;
 	}
 	else
 	{
 		char ch;
-		std::cout << "The Directory exists. If there is a conflict in it, do you want to cover the old one." << std::endl;
+		std::cout << "The Directory exists. If there is a conflict, do you want to cover the old one?" << std::endl;
 		std::cout << "y or n?" << std::endl;
 		std::cin >> ch;
 		return ch == 'y';
 	}
 }
 
-std::string SampleExtracter::Num2Str(int number)
-{
-	std::stringstream ss;
-	ss << number;
-	return ss.str();
-}
-
 void SampleExtracter::SaveSampleImageAsFile(const std::string &outputpath, TypeOfGettingSample sampleType)
 {
 	if (!IsValidOutputPath(outputpath)) return;
 	std::vector <cv::Mat> sampleVector = GetSampleImageVector(sampleType);
-	std::vector <cv::Mat>::iterator it;
 	int count = 0;
-	imwrite(outputpath + '\\' + "begin.jpg", sampleVector[0]);
-	for (it = sampleVector.begin(); it != sampleVector.end(); ++it)
+	for (auto it = sampleVector.cbegin(); it != sampleVector.cend(); ++it)
 	{
 		++count;
-		imwrite(outputpath + '\\' + Num2Str(count) + ".jpg", *it);
+		imwrite(outputpath + '\\' + std::to_string(count) + ".jpg", *it);
 	}
 }
 
@@ -78,38 +71,71 @@ void SampleExtracter::SetLengthOfGap(int gaplength)
 std::vector <int> SampleExtracter::GetSampleFrameNumberVector(TypeOfGettingSample sampleType)
 {
 	int totalFrameNumber = (int)m_VideoCapture.get(CV_CAP_PROP_FRAME_COUNT);
-	std::vector <int> ret;
 	int sampleNumber = (totalFrameNumber - 1) / m_LengthOfGap + 1;
+	std::vector <int> ret(sampleNumber);
 	int bias = 0;
 	for (int i = 0; i < sampleNumber; ++i)
 	{
-		if (sampleType == Randomly)
+		if (Randomly == sampleType)
 		{
 			bias = rand() % min(m_LengthOfGap, (totalFrameNumber - m_LengthOfGap * i));
 		}
 		ret.push_back(m_LengthOfGap * i + bias);
 	}
-	return ret;
+	return std::move(ret);
 }
+
+void SampleExtracter::ChangeBrightnessOfImage(cv::Mat &image, double rate)
+{
+	assert(rate > 0);
+	auto iter = image.begin<cv::Vec3b>();
+	while (iter != image.end<cv::Vec3b>())
+	{
+		//double tmp = min(255, *iter * rate);
+		//*iter = (uchar)tmp;
+		++iter;
+	}
+
+	/*for (int i = 0; i < image.rows; ++i)
+	{
+		uchar *p = image.ptr<uchar>(i);
+		for (int j = 0; j < image.cols * image.channels(); ++j)
+		{
+			double tmp = min(255, p[j] * rate);
+			p[j] = (uchar)tmp;
+		}
+	}*/
+}
+
+
 
 std::vector <cv::Mat> SampleExtracter::GetSampleImageVector(TypeOfGettingSample sampleType)
 {
 	m_VideoCapture.set(CV_CAP_PROP_POS_MSEC, 0);
 
-	std::vector <cv::Mat> ret;
 	std::vector <int> SampleFrameVector = GetSampleFrameNumberVector(sampleType);
-	std::vector <int>::iterator it = SampleFrameVector.begin();
+	std::vector <cv::Mat> ret(SampleFrameVector.size());
+	auto it = SampleFrameVector.begin();
 	cv::Mat image;
 	int count = 0;
 
 	while (m_VideoCapture.read(image))
 	{
+		//imwrite( "D:\\files\\output\\d"+  std::to_string(count) + ".jpg", image);
 		if (SampleFrameVector.end() != it && count == *it)
 		{
 			ret.push_back(image.clone());
+//			ChangeBrightnessOfImage(image, 0.5);
+		//	imwrite( "D:\\files\\output\\"+  std::to_string(count/25) + ".jpg", image);
 			++it;
 		}
 		++count;
 	}
-	return ret;
+	count = 0;
+	for (auto it = ret.cbegin(); it != ret.cend(); ++it)
+	{
+		++count;
+		imwrite( "D:\\files\\output\\" + std::to_string(count) + ".jpg", *it);
+	}
+ 	return std::move(ret);
 }

@@ -27,6 +27,15 @@
     <ClInclude Include="SampleExtracter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="EigenvectorExtracterForImage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OSIDGenerater.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerOfEigenvector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +45,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SampleExtracter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EigenvectorExtracterForImage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OSIDGenerater.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerOfEigenvector.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
