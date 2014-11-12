@@ -89,11 +89,15 @@ void EigenvectorExtracterForImage::RemoveBlackBorder(cv::Mat &image)
 	
 }
 
+int EigenvectorExtracterForImage::OutputFrameCounter = 0;
+
 void EigenvectorExtracterForImage::Prepare(cv::Mat &image)
 {
 	RemoveBlackBorder(image);
-	cv::resize(image, image, SizeOfNormalizedImage, 0, 0);
-	cvtColor(image, image, CV_RGB2GRAY);
+	cvtColor(image, image, CV_BGR2GRAY);
+//	imwrite("D:\\output\\frames\\colorChanged" + std::to_string(OutputFrameCounter) + ".jpg", image);
+	cv::resize(image, image, SizeOfNormalizedImage);
+//	imwrite("D:\\output\\frames\\frame" + std::to_string(OutputFrameCounter++) + ".jpg", image);
 }
 
 void EigenvectorExtracterForImage::Normalize(std::vector<double> &Vec)

@@ -23,6 +23,7 @@ private:
 	static int ElementINABin;
 	static int HeightOfBlock;
 	static int WidthOfBlock;
+	static int OutputFrameCounter;
 	static void RemoveBlackBorder(cv::Mat &image);
 	static void Prepare(cv::Mat &image);
 	static int GetSpaceNumber(int PosNumber);

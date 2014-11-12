@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "OSIDGenerater.h"
+#include <fstream>
 
 
 OSIDGenerater::OSIDGenerater()
@@ -15,6 +16,7 @@ std::vector<std::vector <double>> OSIDGenerater::GetEigenvectorForEachSampleFram
 {
 	cv::VideoCapture video(filename);
 	assert(video.isOpened());
+	int counter = 0;
 
 	std::vector<std::vector<double>> ret;
 	cv::Mat image;
@@ -24,6 +26,8 @@ std::vector<std::vector <double>> OSIDGenerater::GetEigenvectorForEachSampleFram
 	{
 		if (!count)
 		{
+//			imwrite("D:\\files\\output\\" + std::to_string(counter) + ".jpg", image);
+			counter++;
 			ret.push_back(EigenvectorExtracterForImage::GetEigenvector(image));
 		}
 		count = (count + 1) % GapOfGettingSample;
@@ -33,6 +37,7 @@ std::vector<std::vector <double>> OSIDGenerater::GetEigenvectorForEachSampleFram
 
 std::vector<LayerOfEigenvector> OSIDGenerater::Do(const std::string &filename)
 {
+//	std::ofstream fff("D:\\output\\FrameFeature.txt");
 	std::vector<std::vector<double>> VEigenvector = GetEigenvectorForEachSampleFrame(filename);
 	std::vector <LayerOfEigenvector> ResVector;
 	LayerOfEigenvector origin(VEigenvector);
