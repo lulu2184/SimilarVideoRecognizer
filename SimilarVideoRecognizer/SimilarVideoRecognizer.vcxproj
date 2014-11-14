@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EigenvectorExtracterForImage.h" />
+    <ClInclude Include="GroupOfHashValueVector.h" />
     <ClInclude Include="LayerOfEigenvector.h" />
     <ClInclude Include="OSIDGenerater.h" />
     <ClInclude Include="SampleExtracter.h" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EigenvectorExtracterForImage.cpp" />
+    <ClCompile Include="GroupOfHashValueVector.cpp" />
     <ClCompile Include="LayerOfEigenvector.cpp" />
     <ClCompile Include="OSIDGenerater.cpp" />
     <ClCompile Include="SampleExtracter.cpp" />
