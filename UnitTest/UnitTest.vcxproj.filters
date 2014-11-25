@@ -41,5 +41,8 @@
     <ClCompile Include="..\SimilarVideoRecognizer\LayerOfEigenvector.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="UT_NodeContainer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

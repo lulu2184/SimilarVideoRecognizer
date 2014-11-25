@@ -2,6 +2,7 @@
 #include "OSIDGenerater.h"
 #include <fstream>
 
+int OSIDGenerater::GapOfGettingSample = 25;
 
 OSIDGenerater::OSIDGenerater()
 {
@@ -26,7 +27,6 @@ std::vector<std::vector <double>> OSIDGenerater::GetEigenvectorForEachSampleFram
 	{
 		if (!count)
 		{
-//			imwrite("D:\\files\\output\\" + std::to_string(counter) + ".jpg", image);
 			counter++;
 			ret.push_back(EigenvectorExtracterForImage::GetEigenvector(image));
 		}
@@ -37,18 +37,17 @@ std::vector<std::vector <double>> OSIDGenerater::GetEigenvectorForEachSampleFram
 
 std::vector<LayerOfEigenvector> OSIDGenerater::Do(const std::string &filename)
 {
-//	std::ofstream fff("D:\\output\\FrameFeature.txt");
 	std::vector<std::vector<double>> VEigenvector = GetEigenvectorForEachSampleFrame(filename);
 	std::vector <LayerOfEigenvector> ResVector;
 	LayerOfEigenvector origin(VEigenvector);
 	int count = 0;
-	int combination = NumberOfSamplesIn1stLayerVEC;
+	int combination = LayerOfEigenvector::NumberOfSamplesIn1stLayerVEC;
 
-	for (int i = 0; i < NumberOfLayer; ++i)
+	for (int i = 0; i < LayerOfEigenvector::NumberOfLayer; ++i)
 	{
 		LayerOfEigenvector NewLayer = origin.GetLayer(combination);
 		ResVector.push_back(NewLayer);
-		combination *= MultipleOfAdjacentLayer;
+		combination *= LayerOfEigenvector::MultipleOfAdjacentLayer;
 	}
 	return std::move(ResVector);
 }

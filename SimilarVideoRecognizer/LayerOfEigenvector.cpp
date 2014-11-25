@@ -3,6 +3,12 @@
 #include "LayerOfEigenvector.h"
 #include <fstream>
 
+int LayerOfEigenvector::NumberOfSamplesIn1stLayerVEC = 10;
+int LayerOfEigenvector::MultipleOfAdjacentLayer = 2;
+int LayerOfEigenvector::NumberOfLayer = 3;
+int LayerOfEigenvector::SizeOfEigenvector = 27;
+
+
 LayerOfEigenvector::LayerOfEigenvector(int numberOfElements)
 {
 	m_VEigenvector.reserve(numberOfElements);
@@ -15,6 +21,11 @@ LayerOfEigenvector::LayerOfEigenvector(std::vector<std::vector<double>> &vec)
 
 LayerOfEigenvector::~LayerOfEigenvector()
 {
+}
+
+std::vector<std::vector<double>> LayerOfEigenvector::GetVector() const
+{
+	return m_VEigenvector;
 }
 
 void LayerOfEigenvector::print() const

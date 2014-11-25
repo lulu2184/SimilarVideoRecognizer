@@ -12,16 +12,17 @@
 #pragma comment(lib, "opencv_highgui249d.lib")
 #pragma comment(lib, "opencv_imgproc249d.lib")
 
-const int GapOfGettingSample = 25;
-
 class OSIDGenerater
 {
-private:
-	static std::vector<std::vector <double>> GetEigenvectorForEachSampleFrame(const std::string &filename);
-
 public:
 	OSIDGenerater();
 	~OSIDGenerater();
 	static std::vector<LayerOfEigenvector> Do(const std::string &filename);
+
+public:
+	static int GapOfGettingSample;
+
+private:
+	static std::vector<std::vector <double>> GetEigenvectorForEachSampleFrame(const std::string &filename);
 };
 

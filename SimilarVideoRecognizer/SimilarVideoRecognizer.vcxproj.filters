@@ -39,6 +39,27 @@
     <ClInclude Include="GroupOfHashValueVector.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="HashValueGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupOfHashFunction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckForNormalDistribution.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieNodeContainer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieTreeNonleafNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieTreeLeafNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +81,27 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GroupOfHashValueVector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HashValueGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupOfHashFunction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckForNormalDistribution.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrieNodeContainer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrieTreeNonleafNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrieTreeLeafNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrieTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
